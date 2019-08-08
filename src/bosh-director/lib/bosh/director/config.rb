@@ -68,6 +68,7 @@ module Bosh::Director
         :nats_client_private_key_path,
         :record_events,
         :runtime,
+        :use_nats_pure,
       )
 
       def clear
@@ -233,6 +234,7 @@ module Bosh::Director
         @enable_cpi_resize_disk = config.fetch('enable_cpi_resize_disk', false)
         @default_update_vm_strategy = config.fetch('default_update_vm_strategy', nil)
         @parallel_problem_resolution = config.fetch('parallel_problem_resolution', true)
+        @use_nats_pure = config.fetch('use_nats_pure', false)
 
         cpi_config = config.fetch('cpi')
         max_cpi_api_version = cpi_config.fetch('max_supported_api_version')

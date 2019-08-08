@@ -32,6 +32,8 @@ require 'sequel'
 require 'sinatra/base'
 require 'securerandom'
 require 'nats/client'
+require 'nats/io/client'
+require 'openssl'
 require 'securerandom'
 require 'delayed_job_sequel'
 

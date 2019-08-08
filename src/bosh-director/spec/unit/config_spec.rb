@@ -657,6 +657,33 @@ describe Bosh::Director::Config do
     end
   end
 
+  describe 'use_nats_pure' do
+    it 'defaults to false' do
+      described_class.configure(test_config)
+      expect(described_class.use_nats_pure).to be_falsey
+    end
+
+    context 'when explicitly set' do
+      context 'when set to true' do
+        before { test_config['use_nats_pure'] = true }
+
+        it 'resolves to true' do
+          described_class.configure(test_config)
+          expect(described_class.use_nats_pure).to be_truthy
+        end
+      end
+
+      context 'when set to false' do
+        before { test_config['use_nats_pure'] = false }
+
+        it 'resolves to false' do
+          described_class.configure(test_config)
+          expect(described_class.use_nats_pure).to be_falsey
+        end
+      end
+    end
+  end
+
   describe '#configure_db' do
     let(:database) { instance_double(Sequel::Database) }
 
